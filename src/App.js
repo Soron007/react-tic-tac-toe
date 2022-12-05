@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Board from './Components/Board';
+import React, { useState } from 'react';
+
 
 function App() {
+
+  const [board, setBoard] = useState(Array(9).fill(null));
+  const [xPlaying, setXPlaying] = useState(true);
+
+  const handleBoxClick = (boxIdx) => {
+    const updateBoard = board.map((value, idx) => {
+      if (idx === boxIdx) {
+        return xPlaying === true ? "X" : "O";
+      } else {
+        return value;
+      }
+    })
+
+    setBoard(updateBoard);
+    setXPlaying(!xPlaying)
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Board board={board} onClick={handleBoxClick} />
+
     </div>
   );
 }
