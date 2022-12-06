@@ -47,7 +47,7 @@ function App() {
       }
     }
 
-    console.log(scores);
+
 
     setBoard(updateBoard);
     setXPlaying(!xPlaying)
@@ -69,7 +69,7 @@ function App() {
   }
   return (
     <div className="App">
-      <ScoreBoard />
+      <ScoreBoard scores={scores} xPlaying={xPlaying} />
       <Board board={board} onClick={handleBoxClick} />
 
     </div>
