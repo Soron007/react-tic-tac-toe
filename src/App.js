@@ -3,6 +3,7 @@ import './App.css';
 import Board from './Components/Board';
 import React, { useState } from 'react';
 import ScoreBoard from './Components/ScoreBoard';
+import ResetButton from './Components/ResetButton';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xPlaying, setXPlaying] = useState(true);
   const [scores, setScores] = useState({ xScore: 0, oScore: 0 });
+  const [gameOver, setGameOver] = useState(false);
 
 
   const handleBoxClick = (boxIdx) => {
@@ -60,18 +62,26 @@ function App() {
       const [x, y, z] = WIN_CONDITIONS[i];
 
       if (board[x] && board[x] === board[y] && board[y] === board[z]) {
-        console.log(board[x]);
+        setGameOver(true);
         return board[x];
       }
     }
 
-
   }
-  return (
-    <div className="App">
-      <ScoreBoard scores={scores} xPlaying={xPlaying} />
-      <Board board={board} onClick={handleBoxClick} />
 
+  const resetBoard = () => {
+    setGameOver(false);
+    setBoard(Array(9).fill(null));
+  }
+
+
+
+  return (
+    <div>
+      <h1>TIC TAC TOE</h1>
+      <ScoreBoard scores={scores} xPlaying={xPlaying} />
+      <Board board={board} onClick={gameOver ? resetBoard : handleBoxClick} />
+      <ResetButton onReset={resetBoard} />
     </div>
   );
 }

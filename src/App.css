@@ -12,3 +12,18 @@ body{
   background-color: #efefef;
   font-family: "Fredoka One", sans-serif;
 }
+
+h1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@media screen and (max-width: 420px) {
+
+  body{
+    margin: 4rem auto;
+  }
+  
+}

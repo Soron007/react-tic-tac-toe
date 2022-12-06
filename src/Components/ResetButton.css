@@ -1,0 +1,22 @@
+.resetButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 6rem;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem auto;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+    
+}
+
+.resetButton:hover{
+    background-color: crimson;
+    color: black;
+    border: none;
+}
